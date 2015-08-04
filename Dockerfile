@@ -50,8 +50,8 @@ WORKDIR ${INSTALL_DIR}
 
 # Ice setup
 RUN \
-  mkdir /${INSTALL_DIR}/ice_processor && \
-  mkdir /${INSTALL_DIR}/ice_reader && \
+  mkdir /mnt/ice_processor && \
+  mkdir /mnt/ice_reader && \
   curl https://codeload.github.com/Netflix/ice/tar.gz/master | tar -zx -C /opt/ice --strip 1 && \
   grails ${JAVA_OPTS} wrapper && \
   rm grails-app/i18n/messages.properties && \

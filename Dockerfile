@@ -20,7 +20,7 @@ RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noar
 RUN yum -y install epel-release
 
 # Install Java && Git package
-RUN yum install -y unzip wget git java-1.7.0-openjdk java-1.7.0-openjdk-devel
+RUN yum install -y unzip wget git curl tar java-1.7.0-openjdk java-1.7.0-openjdk-devel
 
 # Set Environment variables
 ENV JAVA_HOME /usr/lib/jvm/java
@@ -52,7 +52,8 @@ RUN \
   mkdir /${INSTALL_DIR}/ice_reader && \
   curl https://codeload.github.com/Netflix/ice/tar.gz/master | tar -zx -C /opt/ice --strip 1 && \
   grails ${JAVA_OPTS} wrapper && \
-  rm grails-app/i18n/messages.properties
+  rm grails-app/i18n/messages.properties && \
+  sed -i -e '1i#!/bin/bash\' grailsw
 
 # Setup Volume for ice.properties
 VOLUME ["/opt/ice/src/java/ice.properties"]

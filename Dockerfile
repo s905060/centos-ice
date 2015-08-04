@@ -62,6 +62,4 @@ VOLUME ["/opt/ice/src/java/ice.properties"]
 
 EXPOSE 8080
 
-ENTRYPOINT ["/opt/ice/grailsw -Djava.net.preferIPv4Stack=true -Dice.s3AccessKeyId=${S3_ID} -Dice.s3SecretKey=${S3_KEY} run-app"]
-
-CMD []
+CMD ["/opt/ice/grailsw -Djava.net.preferIPv4Stack=true -Dice.s3AccessKeyId=${S3_ID} -Dice.s3SecretKey=${S3_KEY} run-app"]

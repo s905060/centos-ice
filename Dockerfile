@@ -52,10 +52,9 @@ RUN \
   mkdir /${INSTALL_DIR}/ice_reader && \
   curl https://codeload.github.com/Netflix/ice/tar.gz/master | tar -zx -C /opt/ice --strip 1 && \
   grails ${JAVA_OPTS} wrapper && \
-  rm grails-app/i18n/messages.properties && \
-  sed -i -e '1i#!/bin/bash\' grailsw
+  rm grails-app/i18n/messages.properties
 
-# Setup Volume (ldap datastore, ldap config)
+# Setup Volume for ice.properties
 VOLUME ["/opt/ice/src/java/ice.properties"]
 
 EXPOSE 8080
